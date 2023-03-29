@@ -16,7 +16,6 @@ import java.util.List;
 public class RatingController {
 
     private RatingService ratingService;
-    private final RestTemplate restTemplate;
 
 
 //    public RatingController(RatingService ratingService) {
