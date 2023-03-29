@@ -2,22 +2,26 @@ package com.local.rating.controller;
 
 import com.local.rating.entities.Rating;
 import com.local.rating.service.RatingService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/rating")
+@RequiredArgsConstructor
 public class RatingController {
 
     private RatingService ratingService;
+    private final RestTemplate restTemplate;
 
 
-    public RatingController(RatingService ratingService) {
-        this.ratingService = ratingService;
-    }
+//    public RatingController(RatingService ratingService) {
+//        this.ratingService = ratingService;
+//    }
     @PostMapping("/create")
     public ResponseEntity<Rating> createRating(@RequestBody Rating rating) {
         return ResponseEntity.status(HttpStatus.CREATED).body(ratingService.create(rating));
